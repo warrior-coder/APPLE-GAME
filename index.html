@@ -1,0 +1,136 @@
+<head>
+    <title>Apple Game</title>
+    <script src="harvester_assets/vue.js"></script>
+    <link rel="stylesheet" href="harvester_assets/style.css">
+    <link rel="stylesheet" href="font/stylesheet.css">
+</head>
+
+<body>
+
+    <!-- BG -->
+    <img class="harvester_ground" src="harvester_assets/images/ground.png">
+    <img class="harvester_house" src="harvester_assets/images/house.png">
+    <img class="harvester_cloud-1" src="harvester_assets/images/cloud-1.png">
+    <img class="harvester_cloud-2" src="harvester_assets/images/cloud-2.png">
+
+    <!-- Vue start -->
+    <div id="harvester__tree">
+
+        <!-- Tree -->
+        <img style="width: 100%; height: 100%;" :style="{opacity: (game) ? 1 : .5}" src="harvester_assets/images/tree-apple.png" draggable="false">
+
+        <!-- Apples -->
+        <img class="harvester__tree_apple" 
+            :src="`harvester_assets/images/apple-${apple.ready}.png`" alt="apple"
+            draggable="false"
+            v-for="apple in apples"
+            v-show="apple.show"
+            @mousedown="MouseDown(apple)"
+            :style=
+            "{
+                left: apple.left + '%',
+                top: apple.top + '%',
+                opacity: (game) ? 1 : .5,
+                width: (apple.size * 8) + 'vh',
+                transform: 'rotate(' + apple.rot + 'deg)',
+            }" 
+        >
+        
+        <!-- GameOver banner -->
+        <div v-if="!game" class="harvester_gameover" draggable="false">
+            <img v-if="win" src="harvester_assets/images/win.svg" style="width: 50%;" alt="win" draggable="false">
+            <img v-else src="harvester_assets/images/lose.svg" style="width: 50%;" alt="lose" draggable="false">
+
+            <span v-if="win" class="harvester_gameover_text">С ЭТОЙ ЯБЛОНИ ВЫ СОБРАЛИ УРОЖАЙ, ЗАЙМИТЕСЬ ДРУГИМИ ЯБЛОНЯМИ!</span>
+            <span v-else="win" class="harvester_gameover_text">ЧТО-ТО ПОШЛО НЕ ТАК</span>
+        </div>
+    </div>
+    <!-- Vue end -->
+
+    <!-- Basket -->
+    <img class="harvester_drag_apple" src="harvester_assets/images/apple-1.png" alt="drag_apple" draggable="false">
+    <div class="harvester_basket_container">
+        <img class="harvester_basket-0" src="harvester_assets/images/basket-0.png">
+        <img class="harvester_basket-1" src="harvester_assets/images/basket-1.png">
+        <div class="harvester_basket_drop"></div>
+    </div>
+    
+    <!-- Left container -->
+    <div class="harvester__left_container">
+
+        <div class="harvester__left_subtitle">
+            РАБОТА
+        </div>
+
+        <div class="harvester__left_title">
+            СБОРЩИК УРОЖАЯ
+        </div>
+
+        <div class="harvester__left_line">
+            <div class="harvester__left_line_fill"></div>
+        </div>
+    
+        <div class="harvester__left_description">
+            КРАТКОЕ ОПИСАНИЕ РАБОТЫ, КОТОРОЕ ПОЗВОЛИТ ИГРОКУ ПОНЯТЬ ЧТО К ЧЕМУ И БЫСТРЕЕ РАЗОБРАТЬСЯ В ОСНОВНЫХ АСПЕКТАХ СИЕ ДЕЯТЕЛЬНОСТИ.
+        </div>
+    
+        <div class="harvester__left__info-1">
+            <img src="harvester_assets/images/apple-1.png" alt="apple" style="height: 4.5vh;  transform: rotateY(180deg);" draggable="false">
+            
+            <div style="display: flex; flex-direction: column;">
+                <span style="color: #FFFFFF; font-size: 2.5vh;">ЯБЛОК В КОРЗИНЕ</span>
+                <span style="color: #ffffff59; font-size: 1.44vh;">ОБЩЕЕ КОЛ-ВО КГ ЯБЛОК У ВАС</span>
+            </div>
+            
+            <!-- Round Progress Bar -->
+            <div class="harvester_bar_container">
+                <!-- CIRCLE -->
+                <div class="harvester_bar_round_bg">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50%" cy="50%" r="46%" fill="transparent" stroke="#ffffff29" stroke-width="7%"/>
+                    </svg>
+                </div>
+                <div class="harvester_bar_round">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50%" cy="50%" r="46%" fill="transparent" stroke="#FBFF44" stroke-width="7%"/>
+                    </svg>
+                </div>
+                <!-- TEXT -->
+                <div class="harvester_bar_text">
+                    <span class="harvester_bar_text">0 КГ</span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="harvester__left_info-2">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+               <span style="color: #FFFFFF; font-size: 2.6vh;" class="harvester__left_collect_type">0</span> 
+               <span style="color: #ffffff59; font-size: 1.5vh;">ОБЫЧНЫЕ</span> 
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <span style="color: #FFFFFF; font-size: 2.6vh;" class="harvester__left_collect_type">0</span> 
+                <span style="color: #ffffff59; font-size: 1.5vh;">СРЕДНИЕ</span> 
+             </div>
+             <div style="display: flex; flex-direction: column; align-items: center;">
+                <span style="color: #FFFFFF; font-size: 2.6vh;" class="harvester__left_collect_type">0</span> 
+                <span style="color: #ffffff59; font-size: 1.5vh;">РЕДКИЕ</span> 
+             </div>
+        </div>
+    </div>
+
+    <!-- Right container -->
+    <div class="harvester_right_container">
+        <div class="harvester_right_container_exit">
+            <span>ВЫЙТИ</span>
+            <span class="harvester_right_container_exit_esc">ESC</span>
+        </div>
+
+        <div class="harvester_right_container_info">
+            <img src="harvester_assets/images/mouse.svg" alt="mouse" style="height: 4vh; margin-right: 1vh;"draggable="false">
+            <span>НАЖИМАЙТЕ НА ЛКМ, ЧТОБЫ СОбИРАТЬ ЯБЛОКИ</span>
+        </div>
+    </div>
+
+    <!-- Game Script -->
+    <script src="harvester_assets/script.js"></script>
+</body>

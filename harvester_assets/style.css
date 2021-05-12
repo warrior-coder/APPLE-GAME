@@ -1,0 +1,258 @@
+BODY {
+    background: linear-gradient(201.52deg, #0F1629 12.18%, #181E2E 85.86%);
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    overflow:  hidden;
+
+    font-family: "Akrobat", sans-serif;
+    font-style: normal;
+    color: #FFFFFF;
+}   
+
+/* Static objects */
+.harvester_ground {
+    position: absolute;
+    width: 100vw;
+    height: 38.2vh;
+    bottom: 0;
+}
+.harvester_house {
+    position: absolute;
+    right: 0;
+    top: 31vh;
+    width: 32.2vw;
+    height: 57.3vh;
+}
+.harvester_cloud-1 {
+    position: absolute;
+    width: 34.6vw;
+    height: 27.5vh;
+    top: 1vh;
+    right: 17.5vw;
+}
+.harvester_cloud-2 {
+    position: absolute;
+    width: 13.9vw;
+    height: 14vh;
+    top: 24.5vh;
+    right: 0;
+}
+
+/* Game Over */
+.harvester_gameover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.harvester_gameover_text {
+    font-weight: bold;
+    text-align: center;
+    font-size: 3vh;
+}
+
+/* Tree */
+#harvester__tree {
+    position: absolute;
+    width: 57.6vh;
+    top: 20.7%;
+}
+
+/* Apple */
+.harvester__tree_apple {
+    position: absolute;
+    width: 8vh;
+}
+.harvester_drag_apple {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 8vh;
+    z-index: 9;
+    display: none;
+}
+
+/* Basket */
+.harvester_basket_container {
+    position: absolute;
+    bottom: 0;
+    height: 12vh;
+    width: 48vh;
+}
+.harvester_basket-0 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 59;
+}
+.harvester_basket-1 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+.harvester_basket_drop {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 90%;
+    z-index: 99;
+
+    /* Shows drop area */
+    /* background: rgba(0, 0, 255, 0.5);  */
+}
+
+/* Left container */
+.harvester__left_container {
+    position: absolute;
+    top: 8.4vh;
+    left: 5.8vw;
+    width: 48vh;
+
+    display: flex;
+    flex-direction: column;
+}
+.harvester__left_subtitle {
+    font-weight: 600;
+    font-size: 3.5vh;
+}
+.harvester__left_title {
+    font-weight: bold;
+    font-size: 6.6vh;
+    line-height: 7vh;
+}
+.harvester__left_line {
+    height: 2px;
+    position: relative;
+    margin-top: 1.5vh;
+    margin-bottom: 2.5vh;
+    background: rgba(255, 255, 255, 0.25);
+}
+.harvester__left_line_fill {
+    position: absolute;
+    height: 100%;
+    width: 30%;
+    background: #FBFF44;
+}
+.harvester__left_description {
+    font-size: 2.3vh;
+}
+.harvester__left__info-1 {
+    background: rgba(255, 255, 255, 0.08);
+    border: .2vh solid rgba(255, 255, 255, 0.07);
+    border-radius: .3vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    margin-top: 2vh;
+    margin-bottom: .75vh;
+    width: 32.5vh;
+    height: 10vh;
+    
+}
+.harvester__left_info-1_round_bar {
+    height: 5.5vh;
+    width: 5.5vh;
+    border-radius: 3.25vh;
+    font-weight: 300;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: solid yellow .5vh;
+
+}
+.harvester__left_info-2 {
+    background: rgba(255, 255, 255, 0.08);
+    border: .2vh solid rgba(255, 255, 255, 0.07);
+    border-radius: .3vh;
+    width: 23vh;
+    height: 7vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* Right container */
+.harvester_right_container {
+    position: absolute;
+    top: 8.4vh;
+    right: 3.6vw;
+    width: 12vw;
+    height: 10vh;
+
+    display: flex;
+    flex-direction: column;
+}
+.harvester_right_container_exit {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 2.5vh;
+    margin-bottom: 2vh;
+}
+.harvester_right_container_exit_esc {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: .3vh;
+    height: 5.1vh;
+    width: 5.1vh;
+    margin-left: 1vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.harvester_right_container_info {
+    display: flex;
+    align-items: center;
+    font-size: 1.9vh;
+    color: rgba(255, 255, 255, 0.25);
+}
+
+/* Round Progress Bar */
+.harvester_bar_container {
+    font-weight: 300;
+    margin: 250px 0 250px 0;
+    position: relative;
+    height: 6vh;
+    width: 6vh;
+}
+.harvester_bar_round_bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+.harvester_bar_round {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+
+    stroke-dasharray: 0 9999; 
+    /* stroke-dashoffset: -40; */
+    transition: .5s;
+}
+.harvester_bar_text {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
+
+    color: white;
+}
