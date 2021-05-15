@@ -3,13 +3,13 @@ function rand(min, max) { return Math.trunc(Math.random() * (max-min+1)) + min; 
 
 // Globals
 var _APPLES = [
-    { ready: 0, left: 25, top: 45, size: rand(50,100)/100, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0},
-    { ready: 0, left: 17, top: 28, size:rand(50,100)/100, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0},
-    { ready: 0, left: 30, top: 8, size: rand(50,100)/100, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0},
-    { ready: 0, left: 40, top: 22, size: rand(50,100)/100, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0},
-    { ready: 0, left: 59, top: 14, size: rand(50,100)/100, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0},
-    { ready: 0, left: 58, top: 53, size: rand(50,100)/100, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0},
-    { ready: 0, left: 75, top: 40, size: rand(50,100)/100, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0},
+    { ready: 0, left: 25, top: 45, size: rand(40,80)/10, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0 },
+    { ready: 0, left: 17, top: 28, size: rand(40,80)/10, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0 },
+    { ready: 0, left: 30, top:  8, size: rand(40,80)/10, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0 },
+    { ready: 0, left: 40, top: 22, size: rand(40,80)/10, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0 },
+    { ready: 0, left: 59, top: 14, size: rand(40,80)/10, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0 },
+    { ready: 0, left: 58, top: 53, size: rand(40,80)/10, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0 },
+    { ready: 0, left: 75, top: 40, size: rand(40,80)/10, show: 1, rot: rand(-40,40), time: rand(3,15), collected: 0 }
 ];
 var STATISTICS = {
     kg: 0,
@@ -36,8 +36,8 @@ methods: {
             ACTION = true;
             TARGET = apple;
             DRAG_APPLE.style.transform = 'rotate(' + TARGET.rot + 'deg)';
-            DRAG_APPLE.style.width = TARGET.size * 8 +'vh';
-            W0 = window.innerHeight * TARGET.size * 0.08;
+            DRAG_APPLE.style.width = TARGET.size +'vh';
+            W0 = window.innerHeight * TARGET.size / 100;
         }
         else
         {
@@ -64,16 +64,16 @@ mounted() {
             if (e.target == document.querySelector('.harvester_basket_drop'))
             {
                 // Drop apple
-                document.querySelector('.harvester_basket_container').innerHTML += '<img class="harvester_drag_apple" src="harvester_assets/images/apple-1.png" style="transform: rotate(' + TARGET.rot + 'deg); display: block; width: ' + TARGET.size * 8 + 'vh; left: ' + (e.offsetX-W0/2) + 'px; top:' + (e.offsetY-W0/2) + 'px; z-index:8;">'
+                document.querySelector('.harvester_basket_container').innerHTML += '<img class="harvester_drag_apple" src="harvester_assets/images/apple-1.png" style="transform: rotate(' + TARGET.rot + 'deg); display: block; width: ' + TARGET.size + 'vh; left: ' + (e.offsetX-W0/2) + 'px; top:' + (e.offsetY-W0/2) + 'px; z-index:8;">'
 
                 // Add statistics
-                if (TARGET.size < 0.75)
+                if (TARGET.size < 6)
                 {
                     STATISTICS.kg += 1;
                     STATISTICS.type_0++;
                     document.querySelectorAll('.harvester__left_collect_type')[0].innerText = STATISTICS.type_0;
                 }
-                else if (TARGET.size < 0.90)
+                else if (TARGET.size < 7.5)
                 {
                     STATISTICS.kg += 2;
                     STATISTICS.type_1++;

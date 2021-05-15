@@ -62,19 +62,20 @@ BODY {
 #harvester__tree {
     position: absolute;
     width: 57.6vh;
-    top: 20.7%;
+    height: 62vh;
+    top: 21vh;
 }
 
 /* Apple */
 .harvester__tree_apple {
     position: absolute;
-    width: 8vh;
+    width: 6vh;
 }
 .harvester_drag_apple {
     position: absolute;
     left: 0;
     top: 0;
-    width: 8vh;
+    width: 6vh;
     z-index: 9;
     display: none;
 }
@@ -129,7 +130,7 @@ BODY {
     line-height: 7vh;
 }
 .harvester__left_line {
-    height: 2px;
+    height: .2vh;
     position: relative;
     margin-top: 1.5vh;
     margin-bottom: 2.5vh;
@@ -222,7 +223,6 @@ BODY {
 /* Round Progress Bar */
 .harvester_bar_container {
     font-weight: 300;
-    margin: 250px 0 250px 0;
     position: relative;
     height: 6vh;
     width: 6vh;
@@ -241,7 +241,6 @@ BODY {
     transform: rotate(-90deg);
 
     stroke-dasharray: 0 9999; 
-    /* stroke-dashoffset: -40; */
     transition: .5s;
 }
 .harvester_bar_text {
@@ -249,10 +248,10 @@ BODY {
     height: 100%;
     width: 100%;
 
+    font-size: 2.1vh;
+
     display: flex;
     flex-direction: column;
     align-items: center;    
     justify-content: center;
-
-    color: white;
 }
